@@ -1,0 +1,40 @@
+﻿syntax = "proto3";
+package GrpcLibrary;
+service GrpcLibrary {
+  rpc RequestStringFunction (RequestString) returns (RequestString);
+  rpc SendMessageFunction (SendMessage) returns (SendMessage);
+  rpc RequestByteFunction (RequestByte) returns (RequestByte);
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+}
+
+message Empty {}
+
+message HelloRequest {
+  string name = 1;
+}
+  
+message HelloReply {
+  string message = 1;
+}
+
+message RequestString {
+    string sourceId = 1;
+    repeated string destinationIDs = 2;
+    string rqst = 3;
+    string option = 4;
+}
+
+message SendMessage {
+    string sourceID = 1;
+    repeated string destinationIDs = 2;
+    string msg = 3;
+    string option = 4;
+}
+
+message RequestByte {
+    string sourceID = 1;
+    repeated string destinationIDs = 2;
+    string msg = 3;
+    bytes rqst = 4;
+    string option = 5;
+}
